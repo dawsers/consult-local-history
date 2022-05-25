@@ -74,6 +74,13 @@
   :group 'consult-local-history
   :type '(repeat regexp))
 
+(defface consult-local-history-date
+  '((t :inherit font-lock-constant-face))
+  "Face used for the backup date.")
+
+(defface consult-local-history-comment
+  '((t :inherit font-lock-comment-face))
+  "Face used for the backup commit message.")
 
 (defvar consult-local-history-history nil
   "History for `consult-local-history'.")
@@ -114,7 +121,8 @@
 
 (defun consult-local-history--generate-candidate (time id msg)
   "Generate a candidate with TIME and MSG, adding the commit ID as a text property."
-   (propertize (concat (format "%-55s" time) msg) 'commit-id id)
+  ;;(propertize (concat (format "%-55s" time) msg) 'commit-id id)
+  (propertize (concat (propertize (format "%-55s" time) 'face 'consult-local-history-date) (propertize msg 'face 'consult-local-history-comment)) 'commit-id id)
 )
 
 ;; Overload git-backup candidate generator

@@ -79,6 +79,14 @@ There are several variables that can be customized. Their default value between
   to exclude from local history.
 
 
+You can also customize the faces used by `consult-local-history` to display the
+backup's date and commit comment:
+
+* `consult-local-history-date` (`font-lock-constant-face`)
+
+* `consult-local-history-comment` (`font-lock-comment-face`)
+
+
 ## Commands
 
 * `consult-local-history`: View and manage the available backups in the local
